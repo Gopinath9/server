@@ -1,0 +1,48 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="helloBean" class="com.mkyong.common.HelloWorld">
+		<property name="name" value="Mkyong" />
+
+		<property name="studentsData">
+
+			<set>
+				<value>sun</value>
+				<value>Oracle</value>
+				<value>java4s</value>
+				<value>sun</value>
+			</set>
+		</property>
+
+	</bean>
+	<bean id="user" class="com.mkyong.common.User"
+		autowire="autodetect" scope="prototype">
+		<property name="id" value="001" />
+		<!-- <property name="fullname" value="gn" /> -->
+
+		<!-- <property name="address" ref="address" /> <property name="address"> 
+			<ref local="address" /> </property> -->
+	</bean>
+
+	<bean id="address" class="com.mkyong.common.Address">
+		<constructor-arg value="123" index="0" />
+		<constructor-arg value="110" index="2" />
+		<constructor-arg value="hyderabad" index="1" />
+
+
+		<property name="area" value="madhapur,hyderabad,TG" />
+		<property name="userId" value="001" />
+	</bean>
+	<!-- <bean id="schoolBean" class="com.rs.bean.lifecycle.School">
+		<property name="name" value="kakatiyya" />
+		<property name="board" value="ssc" />
+	</bean> -->
+	
+	<bean id="schoolBean" class="com.rs.bean.lifecycle.School"
+		init-method="init" destroy-method="destroy">
+		<property name="name" value="apollo" />
+		<property name="board" value="ssc" />
+	</bean> 
+</beans>
